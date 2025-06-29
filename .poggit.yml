@@ -10,4 +10,6 @@ projects:
         version: "^3.2.0"
       - src: ifera-mc/ConfigUpdater/ConfigUpdater
         version: ^2.1.0
+      - src: MrEcstsy/MartianUtilities/MartianUtilities
+        version: ^1.0.0
 ...
