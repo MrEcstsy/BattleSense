@@ -4,6 +4,10 @@ branches:
 - main
 projects:
   BattleSense:
-
     path: ""
+    libs:
+      - src: "Paroxity/Commando/Commando"
+        version: "^3.2.0"
+      - src: ifera-mc/ConfigUpdater/ConfigUpdater
+        version: ^2.1.0
 ...
