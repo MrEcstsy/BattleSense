@@ -97,28 +97,28 @@ final class BattleSenseListener implements Listener
                 if (!is_array($stats)) continue;
 
                 $lines = [];
-                $lines[] = $lang->getNested($isWinner ? "pvp-summary.winner-title" : "pvp-summary.loser-title", "")
-                    ? str_replace(["{victim}", "{killer}"], [$oName, $oName], $lang->getNested($isWinner ? "pvp-summary.winner-title" : "pvp-summary.loser-title", ""))
+                $lines[] = $lang->getNested($isWinner ? "pvp-summary.winner-title" : "pvp-summary.loser-title")
+                    ? str_replace(["{victim}", "{killer}"], [$oName, $oName], $lang->getNested($isWinner ? "pvp-summary.winner-title" : "pvp-summary.loser-title"))
                     : ($isWinner ? "You killed $oName!" : "You were killed by $oName!");
 
                 if ($config["show-damage-dealt"] ?? true) {
-                    $lines[] = str_replace("{damage}", (string)round($stats['damageDealt'], 1), $lang->getNested("pvp-summary.damage-dealt", "• Total Damage Dealt: {damage}"));
+                    $lines[] = str_replace("{damage}", (string)round($stats['damageDealt'], 1), $lang->getNested("pvp-summary.damage-dealt"));
                 }
                 if ($config["show-damage-recieved"] ?? true) {
-                    $lines[] = str_replace("{damage}", (string)round($stats['damageReceived'], 1), $lang->getNested("pvp-summary.damage-received", "• Total Damage Received: {damage}"));
+                    $lines[] = str_replace("{damage}", (string)round($stats['damageReceived'], 1), $lang->getNested("pvp-summary.damage-received"));
                 }
                 if ($config["show-combo"] ?? true) {
-                    $lines[] = str_replace("{combo}", (string)$stats['highestCombo'], $lang->getNested("pvp-summary.highest-combo", "• Highest Combo: {combo} hits"));
+                    $lines[] = str_replace("{combo}", (string)$stats['highestCombo'], $lang->getNested("pvp-summary.highest-combo"));
                 }
                 if (!empty($stats['healingUsed'])) {
                     $healStr = [];
                     foreach ($stats['healingUsed'] as $type => $count) {
                         $healStr[] = "$type ($count)";
                     }
-                    $lines[] = str_replace("{healing}", implode(", ", $healStr), $lang->getNested("pvp-summary.healing-used", "• Healing Used: {healing}"));
+                    $lines[] = str_replace("{healing}", implode(", ", $healStr), $lang->getNested("pvp-summary.healing-used"));
                 }
-                if ($config["show-damage-breakdown"] ?? true && !empty($stats['damageBreakdown'])) {
-                    $lines[] = $lang->getNested("pvp-summary.damage-breakdown-title", "• Damage Breakdown:");
+                if (!empty($stats['damageBreakdown']) && ($config["show-damage-breakdown"] ?? true)) {
+                    $lines[] = $lang->getNested("pvp-summary.damage-breakdown-title");
 
                     $grouped = [];
                     foreach ($stats['damageBreakdown'] as $entry) {
@@ -134,10 +134,7 @@ final class BattleSenseListener implements Listener
                         }
                     }
 
-                    $breakdownFormat = $lang->getNested(
-                        "pvp-summary.damage-breakdown-line-grouped",
-                        "   - {source} ({amount}) ({count}x)"
-                    );
+                    $breakdownFormat = $lang->getNested("pvp-summary.damage-breakdown-line-grouped");
 
                     foreach ($grouped as $entry) {
                         if ($entry['count'] > 1) {
@@ -150,7 +147,7 @@ final class BattleSenseListener implements Listener
                             $lines[] = str_replace(
                                 ["{source}", "{amount}"],
                                 [$entry['source'], round($entry['amount'], 1)],
-                                $lang->getNested("pvp-summary.damage-breakdown-line", "   - {source} ({amount})")
+                                $lang->getNested("pvp-summary.damage-breakdown-line")
                             );
                         }
                     }
@@ -159,7 +156,7 @@ final class BattleSenseListener implements Listener
                     $lines[] = str_replace(
                         ["{weapon}", "{damage}"],
                         [$stats['finalBlow']['weapon'], (string)round($stats['finalBlow']['damage'], 1)],
-                        $lang->getNested("pvp-summary.final-blow", "• Final Blow: {weapon} ({damage})")
+                        $lang->getNested("pvp-summary.final-blow")
                     );
                 }
 
