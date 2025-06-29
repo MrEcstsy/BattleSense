@@ -167,7 +167,7 @@ final class BattleSenseListener implements Listener
                         $player->sendActionBarMessage(C::colorize($summary));
                         break;
                     case "title":
-                        $player->sendTitle(C::colorize($lines[0]), C::colorize(implode("\n", array_slice($lines, 1)));
+                        $player->sendTitle(C::colorize($lines[0]), C::colorize(implode("\n", array_slice($lines, 1))));
                         break;
                     default:
                         $player->sendMessage(C::colorize($summary));
