@@ -1,0 +1,12 @@
+name: BattleSense
+main: ecstsy\BattleSense\Loader
+api: 5.3.0
+version: 1.0.0
+author: ecstsy
+description: Adds real=time combat feedback and awarenesss tools for PvP/PvE
+
+permissions:
+  battlesense.command:
+    default: true
+  battlesense.command.reload:
+    default: op

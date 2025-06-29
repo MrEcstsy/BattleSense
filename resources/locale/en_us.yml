@@ -1,0 +1,20 @@
+# (!) DO NOT CHANGE (!)
+version: 1
+
+kill-summary:
+  title: "&r&l&6Kill Summary&r"
+  line: "#{rank} {player}: {damage} dmg"
+  message: "{title}\n{lines}"
+
+pvp-summary:
+  winner-title: "&aYou killed {victim}!"
+  loser-title: "&cYou were killed by {killer}!"
+  damage-dealt: "&7• Total Damage Dealt: &f{damage}"
+  damage-received: "&7• Total Damage Received: &f{damage}"
+  highest-combo: "&7• Highest Combo: &f{combo} hits"
+  crit-hits: "&7• Critical Hits Landed: &f{crits}"
+  healing-used: "&7• Healing Used: &f{healing}"
+  damage-breakdown-title: "&7• Damage Breakdown:"
+  damage-breakdown-line: "   - {source} ({amount})"
+  damage-breakdown-line-grouped: "   - {source} ({amount}) ({count}x)"
+  final-blow: "&7• Final Blow: &f{weapon} ({damage})"
