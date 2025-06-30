@@ -4,11 +4,6 @@ version: 1
 settings:
   language: en_us
   modules:
-    floating-damage:
-      enabled: true
-      crit-color: "&4"
-      normal-color: "&7"
-      format: "-{amount}"
     kill-summary:
       enabled: true
       show-top-damage: true
